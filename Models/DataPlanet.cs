@@ -1,6 +1,7 @@
 using System;
+using CustomGarbageCollector.Helpers;
 
-namespace CustomGarbageCollector.Core;
+namespace CustomGarbageCollector.Models;
 
 public class DataPlanet : SpaceObject
 {

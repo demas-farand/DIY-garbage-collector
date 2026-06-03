@@ -1,4 +1,4 @@
-namespace CustomGarbageCollector.Core;
+namespace CustomGarbageCollector.Models;
 
 public abstract class SpaceObject : IMemoryEntity
 {

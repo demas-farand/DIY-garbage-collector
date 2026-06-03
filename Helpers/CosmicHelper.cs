@@ -1,6 +1,6 @@
 using System;
 
-namespace CustomGarbageCollector.Core;
+namespace CustomGarbageCollector.Helpers;
 
 public static class CosmicHelper
 {
