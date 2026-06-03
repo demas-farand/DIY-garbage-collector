@@ -25,9 +25,15 @@ public class MainWindowViewModel : ViewModelBase
         DistortionLevel = 0;
     }
 
+    private readonly Random _random = new();
+
     public void SpawnPlanet()
     {
-        var planet = new DataPlanet("Planet", 10);
+        var planet = new DataPlanet("Planet", 10)
+        {
+            X = _random.Next(50, 700),
+            Y = _random.Next(50, 350)
+        };
         _blackHoleService.SpawnObject(planet);
         SpaceObjects.Add(planet);
         Console.WriteLine($"[UI] Spawned Planet. Total objects: {SpaceObjects.Count}");
@@ -35,7 +41,11 @@ public class MainWindowViewModel : ViewModelBase
 
     public void SpawnAsteroid()
     {
-        var asteroid = new CacheAsteroid(2);
+        var asteroid = new CacheAsteroid(2)
+        {
+            X = _random.Next(50, 700),
+            Y = _random.Next(50, 350)
+        };
         _blackHoleService.SpawnObject(asteroid);
         SpaceObjects.Add(asteroid);
         Console.WriteLine($"[UI] Spawned Asteroid. Total objects: {SpaceObjects.Count}");

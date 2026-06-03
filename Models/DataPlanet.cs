@@ -11,11 +11,13 @@ public class DataPlanet : SpaceObject
     {
         Name = name;
         Id = CosmicHelper.GenerateUniqueId("PLNT");
+        Size = 40;
+        ColorHex = "#3498DB";
     }
 
     public override void MarkAsGarbage()
     {
         base.MarkAsGarbage();
-        // Console.WriteLine($"Planet Data '{Name}' (ID: {Id}).");
+        Console.WriteLine($"Planet Data '{Name}' (ID: {Id}).");
     }
 }

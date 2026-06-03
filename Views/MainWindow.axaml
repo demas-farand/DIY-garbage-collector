@@ -1,13 +1,22 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:models="using:CustomGarbageCollector.Models"
         xmlns:vm="using:CustomGarbageCollector.ViewModels"
         x:Class="CustomGarbageCollector.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Title="Black Hole Garbage Collector"
         Width="800" Height="600"
-        Background="#0B0B1A"> <Grid RowDefinitions="Auto, *, Auto">
+        Background="#0B0B1A"> 
         
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="15" Margin="15" HorizontalAlignment="Center">
+    <Grid RowDefinitions="Auto, *, Auto">
+        
+        <StackPanel 
+            Grid.Row="0" 
+            Orientation="Horizontal" 
+            Spacing="15" 
+            Margin="15" 
+            HorizontalAlignment="Center"
+        >
             <Button 
                 Content="Spawn Planet" 
                 Command="{Binding SpawnPlanet}" 
@@ -34,22 +43,63 @@
             />
         </StackPanel>
 
-        <Canvas Grid.Row="1" Name="SpaceCanvas" ClipToBounds="True">
-            <Ellipse Canvas.Left="325" Canvas.Top="150" 
-                     Width="150" Height="150" 
-                     Fill="Black" Stroke="#9B59B6" StrokeThickness="4"/>
-            <TextBlock Canvas.Left="355" Canvas.Top="215" 
-                       Text="BLACK HOLE" 
-                       Foreground="#9B59B6" 
-                       FontWeight="Bold"/>
-        </Canvas>
+        <Grid Grid.Row="1" ClipToBounds="True">
+            <Ellipse 
+                Margin= "0,0,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="150" 
+                Height="150" 
+                Fill="Black" Stroke="#9B59B6" StrokeThickness="4"/>
+            <TextBlock 
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="Noir" 
+                Foreground="#9B59B6" 
+                FontWeight="Bold"/>
+
+            <ItemsControl ItemsSource="{Binding SpaceObjects}">
+                
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="models:SpaceObject">
+                        <Ellipse 
+                            Width="{Binding Size}" 
+                            Height="{Binding Size}" 
+                            Fill="{Binding ColorHex}">
+                            
+                            <Ellipse.RenderTransform>
+                                <TranslateTransform X="{Binding X}" Y="{Binding Y}" />
+                            </Ellipse.RenderTransform>
+                            
+                        </Ellipse>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                
+            </ItemsControl>
+
+        </Grid>
 
         <StackPanel Grid.Row="2" Margin="20">
-            <TextBlock Text="Singularity Distortion Level (Memory Usage)" 
-                       Foreground="#00FFFF" Margin="0,0,0,5" FontWeight="Bold"/>
+            <TextBlock 
+                Text="Singularity Distortion Level (Memory Usage)" 
+                Foreground="#00FFFF" 
+                Margin="0,0,0,5" 
+                FontWeight="Bold"
+            />
             
-            <ProgressBar Height="15" Value="{Binding DistortionLevel}" Maximum="100" 
-                         Background="#1A1A3A" Foreground="#FF0033"/>
+            <ProgressBar 
+                Height="15" 
+                Value="{Binding DistortionLevel}" 
+                Maximum="100" 
+                Background="#1A1A3A" 
+                Foreground="#FF0033"
+            />
         </StackPanel>
 
     </Grid>
