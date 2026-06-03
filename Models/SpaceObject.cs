@@ -2,7 +2,7 @@ namespace CustomGarbageCollector.Models;
 
 public abstract class SpaceObject : IMemoryEntity
 {
-    public string Id { get; protected set; }
+    public string Id { get; protected set; } = string.Empty;
     public double Mass { get; protected set; }
     public bool IsGarbage { get; protected set; }
 

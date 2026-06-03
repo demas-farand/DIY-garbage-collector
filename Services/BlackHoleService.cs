@@ -29,7 +29,7 @@ public class BlackHoleService
         
         if (garbage.Count == 0)
         {
-            // Console.WriteLine("[Black Hole] --- ");
+            Console.WriteLine("[Black Hole] No disturbance found. Singularities is stable.");
             return;
         }
 
