@@ -8,26 +8,47 @@
         Background="#0B0B1A"> <Grid RowDefinitions="Auto, *, Auto">
         
         <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="15" Margin="15" HorizontalAlignment="Center">
-            <Button Content="Spawn Planet" Background="#2C3E50" Foreground="White"/>
-            <Button Content="Spawn Asteroid" Background="#2C3E50" Foreground="White"/>
-            <Button Content="Mark as Garbage" Background="#D35400" Foreground="White"/>
-            <Button Content="Activate Black Hole (Sweep)" Background="#8E44AD" Foreground="White" FontWeight="Bold"/>
+            <Button 
+                Content="Spawn Planet" 
+                Command="{Binding SpawnPlanet}" 
+                Background="#2C3E50" 
+                Foreground="White"
+            />
+            <Button 
+                Content="Spawn Asteroid" 
+                Command="{Binding SpawnAsteroid}" 
+                Background="#2C3E50" Foreground="White"
+            />
+            <Button 
+                Content="Mark as Garbage" 
+                Command="{Binding MarkAsGarbage}" 
+                Background="#D35400" 
+                Foreground="White"
+            />
+            <Button 
+                Content="Activate Black Hole (Sweep)" 
+                Command="{Binding ActivateBlackHole}" 
+                Background="#8E44AD" 
+                Foreground="White" 
+                FontWeight="Bold"
+            />
         </StackPanel>
 
         <Canvas Grid.Row="1" Name="SpaceCanvas" ClipToBounds="True">
-            
             <Ellipse Canvas.Left="325" Canvas.Top="150" 
                      Width="150" Height="150" 
                      Fill="Black" Stroke="#9B59B6" StrokeThickness="4"/>
             <TextBlock Canvas.Left="355" Canvas.Top="215" 
-                       Text="BLACK HOLE" Foreground="#9B59B6" FontWeight="Bold"/>
+                       Text="BLACK HOLE" 
+                       Foreground="#9B59B6" 
+                       FontWeight="Bold"/>
         </Canvas>
 
         <StackPanel Grid.Row="2" Margin="20">
             <TextBlock Text="Singularity Distortion Level (Memory Usage)" 
                        Foreground="#00FFFF" Margin="0,0,0,5" FontWeight="Bold"/>
             
-            <ProgressBar Height="15" Value="20" Maximum="100" 
+            <ProgressBar Height="15" Value="{Binding DistortionLevel}" Maximum="100" 
                          Background="#1A1A3A" Foreground="#FF0033"/>
         </StackPanel>
 
