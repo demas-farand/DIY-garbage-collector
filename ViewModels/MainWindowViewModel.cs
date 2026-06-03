@@ -21,19 +21,19 @@ public class MainWindowViewModel : ViewModelBase
         
         var earth = new DataPlanet("Earth", 1000);
         var mars = new DataPlanet("Mars", 800);
-        // var spaceDust =
-        // var alienShip =
+        var spaceDust = new CacheAsteroid(50);
+        var alienShip = new CacheAsteroid(120);
         
         _blackHoleService.SpawnObject(earth);
         _blackHoleService.SpawnObject(mars);
-        // _blackHoleService.SpawnObject(spaceDust);
-        // _blackHoleService.SpawnObject(alienShip);
+        _blackHoleService.SpawnObject(spaceDust);
+        _blackHoleService.SpawnObject(alienShip);
         
         _blackHoleService.PrintUniverseStatus();
 
         Console.WriteLine("\n[Simulation] Releasing references from Earth and Space Dust...");
         earth.MarkAsGarbage();
-        // spaceDust.MarkAsGarbage();
+        spaceDust.MarkAsGarbage();
         _blackHoleService.SuckGarbage();
         
         _blackHoleService.PrintUniverseStatus();
