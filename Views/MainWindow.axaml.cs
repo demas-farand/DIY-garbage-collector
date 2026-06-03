@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace CustomGarbageCollector;
+namespace CustomGarbageCollector.Views;
 
 public partial class MainWindow : Window
 {
