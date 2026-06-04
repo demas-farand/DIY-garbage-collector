@@ -45,18 +45,48 @@
 
         <Grid Grid.Row="1" ClipToBounds="True">
             <Ellipse 
-                Margin= "0,0,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="200" 
+                Height="200" 
+                Fill="Transparent" 
+                Stroke="#770000" 
+                StrokeThickness="4"
+                Opacity="0.3"
+            />
+            <Ellipse 
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="175" 
+                Height="175" 
+                Fill="Transparent" 
+                Stroke="#c74a00" 
+                StrokeThickness="8"
+                Opacity="0.7"
+            />
+            <Ellipse 
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="156" 
+                Height="156" 
+                Fill="Transparent" 
+                Stroke="#db904e" 
+                StrokeThickness="4"
+            />
+            <Ellipse 
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Width="150" 
                 Height="150" 
-                Fill="Black" Stroke="#9B59B6" StrokeThickness="4"/>
+                Fill="#111115" 
+            />
             <TextBlock 
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Text="Noir" 
-                Foreground="#9B59B6" 
-                FontWeight="Bold"/>
+                Foreground="#db904e" 
+                FontWeight="Bold"
+            />
 
             <ItemsControl ItemsSource="{Binding SpaceObjects}">
                 
@@ -93,13 +123,18 @@
                 FontWeight="Bold"
             />
             
-            <ProgressBar 
-                Height="15" 
-                Value="{Binding DistortionLevel}" 
-                Maximum="100" 
+            <Border 
+                Height="60"
+                BorderBrush="#2C3E50" 
+                BorderThickness="2"
                 Background="#1A1A3A" 
-                Foreground="#FF0033"
+            >
+            <Path 
+                Stroke="#FF0055"
+                StrokeThickness="2"
+                Data="{Binding GraphData}" 
             />
+            </Border>
         </StackPanel>
 
     </Grid>
