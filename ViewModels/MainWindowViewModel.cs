@@ -88,9 +88,20 @@ public class MainWindowViewModel : ViewModelBase
         _blackHoleService.SuckGarbage();
 
         var garbageList = SpaceObjects.Where(o => o.IsGarbage).ToList();
+        var survivorsList = SpaceObjects.Where(o => !o.IsGarbage).ToList();
+
         foreach (var garbage in garbageList)
         {
             SpaceObjects.Remove(garbage);
+        }
+
+        foreach (var survivor in survivorsList)
+        {
+            if (survivor.Generation < 2)
+            {
+                survivor.Generation++;
+                Console.WriteLine($"[Generational GC] {survivor.Id} promoted to Gen {survivor.Generation}");
+            }
         }
 
         DistortionLevel -= garbageList.Count * 5; 

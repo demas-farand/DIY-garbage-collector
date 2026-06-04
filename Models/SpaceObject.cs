@@ -10,6 +10,20 @@ public abstract class SpaceObject : IMemoryEntity, INotifyPropertyChanged
     public double X { get; set; }
     public double Y { get; set; }
     public double Size { get; protected set; }
+
+    private int _generation = 0;
+    public int Generation
+    {
+        get => _generation;
+        set
+        {
+            if (_generation != value)
+            {
+                _generation = value;
+                OnPropertyChanged();
+            }
+        }
+    }
     private string _colorHex = "#FFFFFF";
     public string ColorHex 
     { 

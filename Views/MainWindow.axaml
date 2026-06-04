@@ -98,16 +98,26 @@
                 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate x:DataType="models:SpaceObject">
-                        <Ellipse 
-                            Width="{Binding Size}" 
-                            Height="{Binding Size}" 
-                            Fill="{Binding ColorHex}">
-                            
-                            <Ellipse.RenderTransform>
+                    <StackPanel>
+                            <StackPanel.RenderTransform>
                                 <TranslateTransform X="{Binding X}" Y="{Binding Y}" />
-                            </Ellipse.RenderTransform>
-                            
-                        </Ellipse>
+                            </StackPanel.RenderTransform>
+    
+                            <TextBlock 
+                                    Text="{Binding Generation, 
+                                    StringFormat='Gen {0}'}" 
+                                    Foreground="#00FFFF" 
+                                    FontSize="12" 
+                                    FontWeight="Bold"
+                                    HorizontalAlignment="Center"
+                                    Margin="0,0,0,2"/>
+                                       
+                            <Ellipse 
+                                Width="{Binding Size}" 
+                                Height="{Binding Size}" 
+                                Fill="{Binding ColorHex}" 
+                            />
+                        </StackPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 
