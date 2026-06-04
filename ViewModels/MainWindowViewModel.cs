@@ -50,6 +50,10 @@ public class MainWindowViewModel : ViewModelBase
         };
         _blackHoleService.SpawnObject(planet);
         SpaceObjects.Add(planet);
+        
+        DistortionLevel += 5;
+        if (DistortionLevel > 100) DistortionLevel = 100;
+
         Console.WriteLine($"[UI] Spawned Planet at X: {planet.X}, Y: {planet.Y}");
     }
 
@@ -62,6 +66,10 @@ public class MainWindowViewModel : ViewModelBase
         };
         _blackHoleService.SpawnObject(asteroid);
         SpaceObjects.Add(asteroid);
+
+        DistortionLevel += 5;
+        if (DistortionLevel > 100) DistortionLevel = 100;
+
         Console.WriteLine($"[UI] Spawned Asteroid at X: {asteroid.X}, Y: {asteroid.Y}");
     }
 
@@ -85,8 +93,8 @@ public class MainWindowViewModel : ViewModelBase
             SpaceObjects.Remove(garbage);
         }
 
-        DistortionLevel += garbageList.Count * 5; 
-        if (DistortionLevel > 100) DistortionLevel = 100;
+        DistortionLevel -= garbageList.Count * 5; 
+        if (DistortionLevel < 0) DistortionLevel = 0;
         
         Console.WriteLine($"[UI] Sweep complete. Current Distortion: {DistortionLevel}%");
     }
