@@ -58,6 +58,8 @@ To run or compile this project locally, you will need:
 Open your terminal, navigate to the project directory, and execute the following command:
 ```bash
 dotnet run
+```
 
 for building or publish use:
+```
 dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true
